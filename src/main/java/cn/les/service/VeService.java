@@ -1,5 +1,6 @@
 package cn.les.service;
 
+import cn.les.Utils.LinkListForData;
 import cn.les.entity.VeKey;
 import cn.les.entity.VeLocation;
 import cn.les.entity.VePedto;
@@ -141,7 +142,7 @@ public class VeService {
         logger.info("未找到相应ve");
         return null;
     }
-
+//存入数据库
     public String saveData(int id, String data, String time) {
         String sql = "update iot_ve_data set data= " + data + ",time=\'" + time + "\' where id=" + id;
         int i = jdbcTemplate.update(sql);
@@ -149,6 +150,22 @@ public class VeService {
             return "success";
         }
         return "fail";
+    }
+    public String saveData(int id, String message) {
+        JSONObject jb=new JSONObject(message);
+        JSONObject zvalue=jb.getJSONObject("zvalue");
+        String data=zvalue.get("hum").toString();
+        String date=jb.getString("time");
+        String sql = "update iot_ve_data set data= " + data + ",time=\'" + date + "\' where id=" + id;
+        int i = jdbcTemplate.update(sql);
+        if (i == 1) {
+            return "success";
+        }
+        return "fail";
+    }
+    //存入内存
+    public void putInList(String data, LinkListForData linkList){
+        linkList.put(data);
     }
 
     //    public String savaData(int id,String json) throws JSONException{
@@ -167,5 +184,12 @@ public class VeService {
         String data=zvalue.get("hum").toString();
         String date=jb.getString("time");
         saveData(1,data,date);
+    }
+    //获取设备状态
+    public String getVeStateById(String veId){
+        String sql="select pe_state from iot_pe where pe_id=(select DISTINCT pe_id from iot_ve_pe_bind where ve_id='"+veId+"')";
+        String state=jdbcTemplate.queryForObject(sql,String.class);
+
+        return state;
     }
 }

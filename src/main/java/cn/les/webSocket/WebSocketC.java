@@ -36,8 +36,8 @@ public class WebSocketC extends WebSocketClient {
         this.send("{\"veId\":\"102160613134951192168402401009\",\"serviceId\":\"105151104105203192168402401005\",\"key\":\"47d53e8e-31a0-4e9a-849b-aaa6ed12b79e\",\"is_atom\":\"1\",\"param\":{\"subscribe\":\"on\"}}");
     }
     //public void onFragment(Framedata fragment){}
-    public static void main(String[] args )throws URISyntaxException{
-        WebSocketC c=new WebSocketC(new URI("ws://192.168.40.240:8880/IoT_Harbor/websocketInterface"));
-        c.connect();
-    }
+//    public static void main(String[] args )throws URISyntaxException{
+//        WebSocketC c=new WebSocketC(new URI("ws://192.168.40.240:8880/IoT_Harbor/websocketInterface"));
+//        c.connect();
+//    }
 }

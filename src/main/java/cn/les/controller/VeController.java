@@ -119,7 +119,7 @@ public List<VePedto> getAllVes(){
     public String saveData(String data,String date,String time){
         //list into memory
         String result="{\"zvalue\":{\"hum\":\""+data+"\"},\"time\":\""+date+" "+time+"\"}";
-        linkedList.put(result);
+        veService.putInList(result,linkedList);
         //into database
         id++;
         if(id==21){
@@ -138,6 +138,18 @@ public List<VePedto> getAllVes(){
 
         return "success";
     }
+    //@RequestMapping(value="/saveData")
+    public String saveData(String result){
+        //list into memory
+        veService.putInList(result,linkedList);
+        //into database
+        id++;
+        if(id==21){
+            id=1;
+        }
+        veService.saveData(id,result);
+        return "success";
+    }
     //senddata
     @RequestMapping(value="/sendData")
     public List sendData(){
@@ -147,6 +159,10 @@ public List<VePedto> getAllVes(){
     @RequestMapping(value="/getLoactionByVeId")
     public VeLocation getLocationByVeId(String veId){
         return veService.getLocationByVeId(veId);
+    }
+    @RequestMapping(value="/getVeStateById")
+    public String getVeStateById(String veId){
+        return veService.getVeStateById(veId);
     }
 
 

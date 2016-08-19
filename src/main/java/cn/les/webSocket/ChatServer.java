@@ -49,31 +49,31 @@ public class ChatServer extends WebSocketServer {
 		System.out.println( "received fragment: " + fragment );
 	}
 
-	public static void main( String[] args ) throws InterruptedException , IOException {
-		WebSocketImpl.DEBUG = true;
-		int port = 8887; // 843 flash policy port
-		try {
-			port = Integer.parseInt( args[ 0 ] );
-		} catch ( Exception ex ) {
-		}
-		ChatServer s = new ChatServer( port );
-		s.start();
-		System.out.println( "ChatServer started on port: " + s.getPort() );
-
-		BufferedReader sysin = new BufferedReader( new InputStreamReader( System.in ) );
-		while ( true ) {
-			String in = sysin.readLine();
-			s.sendToAll( in );
-			if( in.equals( "exit" ) ) {
-				s.stop();
-				break;
-			} else if( in.equals( "restart" ) ) {
-				s.stop();
-				s.start();
-				break;
-			}
-		}
-	}
+//	public static void main( String[] args ) throws InterruptedException , IOException {
+//		WebSocketImpl.DEBUG = true;
+//		int port = 8887; // 843 flash policy port
+//		try {
+//			port = Integer.parseInt( args[ 0 ] );
+//		} catch ( Exception ex ) {
+//		}
+//		ChatServer s = new ChatServer( port );
+//		s.start();
+//		System.out.println( "ChatServer started on port: " + s.getPort() );
+//
+//		BufferedReader sysin = new BufferedReader( new InputStreamReader( System.in ) );
+//		while ( true ) {
+//			String in = sysin.readLine();
+//			s.sendToAll( in );
+//			if( in.equals( "exit" ) ) {
+//				s.stop();
+//				break;
+//			} else if( in.equals( "restart" ) ) {
+//				s.stop();
+//				s.start();
+//				break;
+//			}
+//		}
+//	}
 	@Override
 	public void onError( WebSocket conn, Exception ex ) {
 		ex.printStackTrace();
