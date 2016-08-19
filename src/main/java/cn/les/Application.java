@@ -39,6 +39,7 @@ public class Application {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+        //websocket建立连接
         c.connect();
     }
 }
