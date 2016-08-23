@@ -5,6 +5,7 @@ import cn.les.entity.VeKey;
 import cn.les.entity.VeLocation;
 import cn.les.entity.VePedto;
 import org.apache.log4j.Logger;
+import org.apache.tomcat.jdbc.pool.DataSource;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,14 @@ import java.util.List;
  */
 @Service("veService")
 public class VeService {
+//    @Autowired
+//    // @Qualifier("jdbc")
+//    private JdbcTemplate jdbcTemplate;
     @Autowired
-    // @Qualifier("jdbc")
-    private JdbcTemplate jdbcTemplate;
+    @Qualifier("dataSource")
+    private DataSource dataSource;
+    
+    private JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
 
     private static Logger logger = Logger.getLogger(VeService.class);
 

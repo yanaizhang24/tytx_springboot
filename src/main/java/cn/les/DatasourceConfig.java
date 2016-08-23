@@ -21,16 +21,16 @@ import javax.sql.DataSource;
 
     public class DatasourceConfig {
 
-        @Bean(name = "dataSource")
-        @ConfigurationProperties(prefix = "spring.datasource")
-        public DataSource dataSource() {
-            return DataSourceBuilder.create().build();
-        }
-
-        @Bean(name = "jdbc")
-        public JdbcTemplate jdbcTemplate(@Qualifier("dataSource") DataSource dataSource) {
-            return new JdbcTemplate(dataSource);
-        }
+//        @Bean(name = "dataSource")
+//        @ConfigurationProperties(prefix = "spring.datasource")
+//        public DataSource dataSource() {
+//            return DataSourceBuilder.create().build();
+//        }
+//
+//        @Bean(name = "jdbc")
+//        public JdbcTemplate jdbcTemplate(@Qualifier("dataSource") DataSource dataSource) {
+//            return new JdbcTemplate(dataSource);
+//        }
 //    @Bean(name = "dataSource_hos")
 //    @ConfigurationProperties(prefix = "spring.datasource_hos")
 //    public DataSource dataSource_hos() {
