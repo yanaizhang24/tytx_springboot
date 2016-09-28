@@ -7,7 +7,6 @@ cn\les\webSocket\ChatServer.class
 cn\les\entity\VePeSdto.class
 cn\les\service\VeService$3.class
 cn\les\entity\VeLocation.class
-META-INF\spring-configuration-metadata.json
 cn\les\webSocket\WebSocketC.class
 cn\les\controller\TestController.class
 cn\les\controller\VeController.class

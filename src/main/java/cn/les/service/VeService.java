@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,9 +29,9 @@ public class VeService {
 //    // @Qualifier("jdbc")
 //    private JdbcTemplate jdbcTemplate;
     @Autowired
-    @Qualifier("dataSource")
+    //@Qualifier("hos")
     private DataSource dataSource;
-    
+
     private JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
 
     private static Logger logger = Logger.getLogger(VeService.class);
